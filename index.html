@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shubham Study Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Shubham Study Timer<small id="phase">Ready to focus</small></h1>
+  <button class="icon-btn" id="openSettings" aria-label="Settings">⚙</button>
+</header>
+
+<nav>
+  <button class="active" data-tab="timer">Timer</button>
+  <button data-tab="stopwatch">Stopwatch</button>
+  <button data-tab="clock">Clock</button>
+</nav>
+
+<main>
+  <section id="timer" class="active">
+    <div class="ring">
+      <svg viewBox="0 0 120 120">
+        <defs><linearGradient id="grad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#7dff3a"/><stop offset=".5" stop-color="#ffc400"/><stop offset="1" stop-color="#ff3b30"/>
+        </linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="52"/>
+        <circle class="bar" id="bar" cx="60" cy="60" r="52"/>
+      </svg>
+      <div class="inner">
+        <div class="time" id="tTime" title="Tap for full screen">00:25:00</div>
+        <div class="label" id="tInterval">Interval : 1/4</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="ghost" id="tReset">Reset</button>
+      <button class="primary" id="tToggle">START</button>
+      <button class="ghost" id="tFull">Full</button>
+    </div>
+  </section>
+
+  <section id="stopwatch">
+    <div class="big" id="sTime" title="Tap for full screen">00:00:00</div>
+    <div class="controls">
+      <button class="ghost" id="sLap">Lap</button>
+      <button class="primary" id="sToggle">START</button>
+      <button class="ghost" id="sReset">Reset</button>
+    </div>
+    <div class="laps" id="laps"></div>
+  </section>
+
+  <section id="clock">
+    <div class="big" id="cTime" title="Tap for full screen">00:00:00</div>
+    <div class="label" id="cDate"></div>
+  </section>
+</main>
+
+<p class="quote" id="quote"></p>
+
+<dialog id="settings">
+  <h2>Study settings</h2>
+  <label>Study (minutes)<input type="number" id="setStudy" min="1" max="180" value="25"></label>
+  <label>Break (minutes)<input type="number" id="setBreak" min="1" max="60" value="5"></label>
+  <label>Intervals<input type="number" id="setRounds" min="1" max="12" value="4"></label>
+  <div class="controls">
+    <button class="ghost" id="cancelSet">Cancel</button>
+    <button class="primary" id="saveSet" style="padding:12px 26px">Save</button>
+  </div>
+</dialog>
+
+<div id="full">
+  <div class="digits" id="fDigits">00:00:00</div>
+  <div class="row"><button class="ghost" id="fToggle">Stop</button><button class="ghost" id="fExit">Close</button></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
